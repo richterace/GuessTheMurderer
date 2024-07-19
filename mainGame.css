@@ -1,0 +1,251 @@
+#main-game-container {
+    display: flex;
+    width: 90%;
+    max-width: 1200px;
+    height: 90%;
+    max-height: 90vh;
+    background-color: rgba(30, 18, 18, 0.475);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    left: 270px;
+    position: absolute;
+    overflow: hidden;
+}
+
+#main-game-container p {
+    color: white;
+}
+
+
+#main-left-section,
+#main-right-section {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+#score {
+    width: 250px;
+    height: 90%;
+    left: 10px;
+    max-height: 90vh;
+    background-color: rgba(90, 85, 85, 0);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+
+#score-upper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.score-box {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #000000;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    color: #930303;
+}
+
+#score-lower {
+    flex: 1;
+    padding: 10px;
+    overflow-y: auto;
+    /* Allow vertical scrolling for chat history */
+    background-color: #000000;
+}
+
+#chat-history {
+    height: 100%;
+    overflow-y: auto;
+    /* Allow vertical scrolling for chat history content */
+    background-color: #000000;
+    color: white;
+}
+
+.mark-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.mark-card {
+    position: relative;
+    /* Ensure positioning context for ::before pseudo-element */
+    padding: 10px;
+    background-color: #000000;
+    border-radius: 8px;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.mark-card:hover {
+    background-color: #4f0404;
+}
+
+.mark-card::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2em;
+    color: red;
+    font-weight: bold;
+    visibility: hidden;
+    /* Initially hidden */
+}
+
+
+
+
+#main-right-section {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    /* Occupy full height of parent container (main-game-container) */
+}
+
+#premade-questions {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+#question-history {
+    flex-grow: 1;
+    /* Grow to occupy remaining space */
+    overflow-y: auto;
+    /* Enable vertical scrolling if content exceeds container */
+    padding: 10px;
+}
+
+#question-history h3 {
+    text-align: center;
+}
+
+#question-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+#question-list li {
+    cursor: pointer;
+    padding: 5px;
+    background-color: #000000;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+}
+
+#question-list li:hover {
+    background-color: #730000;
+}
+
+#question-input {
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #ccc;
+    margin-bottom: 20px;
+}
+
+#question-input input[type="text"] {
+    flex-grow: 1;
+    /* Occupy remaining space */
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#question-input button {
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+#question-input button:hover {
+    background-color: #0056b3;
+}
+
+.ai-response {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background-color: #ffffff00;
+
+    padding: 10px;
+    z-index: 9999;
+    /* Ensure it appears on top */
+}
+
+
+#ai-guess-modal {
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
+    display: flex;
+    /* Flexbox for centering */
+    align-items: center;
+    /* Center vertically */
+    justify-content: center;
+    /* Center horizontally */
+}
+
+#ai-guess-modal .modal-content {
+    background-color: #fefefe00;
+    padding: 20px;
+    width: 80%;
+    /* Could be more or less, depending on screen size */
+    max-width: 500px;
+    /* Limit maximum width */
+    color: black;
+    text-align: center;
+    /* Center text and image */
+}
+
+#ai-guess-modal .close-button {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+#ai-guess-modal .close-button:hover,
+#ai-guess-modal .close-button:focus {
+    color: black;
+    text-decoration: none;
+}

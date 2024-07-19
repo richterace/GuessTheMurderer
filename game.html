@@ -1,0 +1,735 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Game</title>
+    <link rel="stylesheet" href="frontend.css">
+    <link rel="stylesheet" href="mainGame.css">
+    <link rel="stylesheet" href="homepage.css">
+</head>
+<body>
+
+    <div id="home" style="background-image: url('background.svg');">
+        <div class="top1">
+                <span>Find the Murderer</span>
+                <button class="homebutton" onclick="showGamePage()">Start Game</button>
+            </div>
+        </div>
+    </div>
+        
+    <div id="loading-screen" class="loading-overlay">
+        <div class="loading-content">
+            <span>Loading...</span>
+        </div>
+    </div>
+
+    <div id="game-container">
+        <div id="left-section">
+            <h2 style="color: white;">Select a Suspect</h2>
+            <div class="cards">
+                
+                <div class="card" onclick="selectCard(1)">
+                    <img src="character/1.svg" alt="Person 1">   
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Watch</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Dark</p>
+                    <p>Clothe's Color: Red, Yellow</p>
+                </div>
+
+                <div class="card" onclick="selectCard(2)">
+                    <img src="character/2.svg" alt="Person 2">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Earrings</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Tan</p>
+                    <p>Clothe's Color: Green</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(3)">
+                    <img src="character/3.svg" alt="Person 3">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Watch</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Black, White</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(4)">
+                    <img src="character/4.svg" alt="Person 4">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Red</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Necklace</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Light</p>
+                    <p>Clothe's Color: Pink, Purple</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(5)">
+                    <img src="character/5.svg" alt="Person 5">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Sunglasses</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Olive</p>
+                    <p>Clothe's Color: Yellow, White</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(6)">
+                    <img src="character/6.svg" alt="Person 6">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Bracelet</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Blue</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(7)">
+                    <img src="character/7.svg" alt="Person 7">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: No</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Dark</p>
+                    <p>Clothe's Color: Red, Black</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(8)">
+                    <img src="character/8.svg" alt="Person 8">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Scarf</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Light</p>
+                    <p>Clothe's Color: White, Blue</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(9)">
+                    <img src="character/9.svg" alt="Person 9">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Gray</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: No</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Green, Black</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(10)">
+                    <img src="character/10.svg" alt="Person 10">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Earrings</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Olive</p>
+                    <p>Clothe's Color: Yellow</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(11)">
+                    <img src="character/11.svg" alt="Person 11">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Watch</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Blue, Red</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(12)">
+                    <img src="character/12.svg" alt="Person 12">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Red</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Necklace</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Tan</p>
+                    <p>Clothe's Color: Pink</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(13)">
+                    <img src="character/13.svg" alt="Person 13">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Sunglasses</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Light</p>
+                    <p>Clothe's Color: Black, White</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(14)">
+                    <img src="character/14.svg" alt="Person 14">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Bracelet</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Olive</p>
+                    <p>Clothe's Color: Yellow, Green</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(15)">
+                    <img src="character/15.svg" alt="Person 15">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Necklace</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Dark</p>
+                    <p>Clothe's Color: Blue</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(16)">
+                    <img src="character/16.svg" alt="Person 16">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Red</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Earrings</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: White, Blue</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(17)">
+                    <img src="character/17.svg" alt="Person 17">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Gray</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Watch</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Light</p>
+                    <p>Clothe's Color: Black, Red</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(18)">
+                    <img src="character/18.svg" alt="Person 18">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Scarf</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Olive</p>
+                    <p>Clothe's Color: Blue, Pink</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(19)">
+                    <img src="character/19.svg" alt="Person 19">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Necklace</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Green, Yellow</p>
+                </div>
+                
+                <div class="card" onclick="selectCard(20)">
+                    <img src="character/20.svg" alt="Person 20">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Bracelet</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Dark</p>
+                    <p>Clothe's Color: Red, Blue</p>
+                </div>
+
+               
+                
+
+            </div>
+        </div>
+        <div id="right-section">
+            <div id="selected-card" class="section" style="display: none;">
+                <h2 style="color: white; right: 420px;position:absolute; top:45px">Your Suspect</h2>
+                <div class="cardChoosen" style="display: flex;">
+                    <!-- Selected card details will be dynamically added here -->
+                </div>
+            <button onclick="startGame()">Start the Game</button>    
+            </div>
+            
+            <div id="ai-selected-card" style="display:none">
+                <h2>AI Selected Card</h2>  
+                <div class="card" class="section">
+                    <!-- AI's selected card details will be dynamically added here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="score" style="display: none;">
+        <div id="score-upper">
+            <div class="score-box">
+                <h3>Points</h3>
+                <p id="points">0</p>
+            </div>
+            <div class="score-box">
+                <h3>Lies</h3>
+                <p id="lies">0</p>
+            </div>
+            <div class="score-box">
+                <h3>Eliminated</h3>
+                <p id="eliminated">0</p>
+            </div>
+        </div>
+        <div id="score-lower">
+            <h3 style="color: white;" >Chat History</h3>
+            <div id="chat-history" ></div>
+        </div>
+    </div>
+    
+    <div id="main-game-container" style="display: none;">
+       
+        <div id="main-left-section">
+            <h2 style="color: white;">Eliminate a Card</h2>
+            <button onclick="eliminateCards()">Eliminate</button>
+            <button id="guessSuspect" onclick="guessSuspect()">Guess</button>
+            <button id="unselectCards" onclick="unselectCards()">Unselect</button>
+            <div class="mark-cards">
+                
+
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/1.svg" alt="Person 1">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Watch</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Dark</p>
+                    <p>Clothe's Color: Red, Yellow</p>
+
+                </div>
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/2.svg" alt="Person 2">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Earrings</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Tan</p>
+                    <p>Clothe's Color: Green</p>
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/3.svg" alt="Person 3">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Watch</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Black, White</p>
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/4.svg" alt="Person 4">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Red</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Necklace</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Light</p>
+                    <p>Clothe's Color: Pink, Purple</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/5.svg" alt="Person 5">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Sunglasses</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Olive</p>
+                    <p>Clothe's Color: Yellow, White</p>
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/6.svg" alt="Person 6">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Bracelet</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Blue</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/7.svg" alt="Person 7">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: No</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Dark</p>
+                    <p>Clothe's Color: Red, Black</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/8.svg" alt="Person 8">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Scarf</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Light</p>
+                    <p>Clothe's Color: White, Blue</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/9.svg" alt="Person 9">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Gray</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: No</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Green, Black</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/10.svg" alt="Person 10">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Earrings</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Olive</p>
+                    <p>Clothe's Color: Yellow</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/11.svg" alt="Person 11">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Watch</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Blue, Red</p>
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/12.svg" alt="Person 12">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Red</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Necklace</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Tan</p>
+                    <p>Clothe's Color: Pink</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/13.svg" alt="Person 13">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Sunglasses</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Light</p>
+                    <p>Clothe's Color: Black, White</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/14.svg" alt="Person 14">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Bracelet</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Olive</p>
+                    <p>Clothe's Color: Yellow, Green</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/15.svg" alt="Person 15">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Necklace</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Dark</p>
+                    <p>Clothe's Color: Blue</p>
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/16.svg" alt="Person 16">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Red</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Earrings</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: White, Blue</p>
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/17.svg" alt="Person 17">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Gray</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Watch</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Light</p>
+                    <p>Clothe's Color: Black, Red</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/18.svg" alt="Person 18">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Blonde</p>
+                    <p>Hair Style: Wavy</p>
+                    <p>Hair Length: Long</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Scarf</p>
+                    <p>Headwear: No</p>
+                    <p>Skin: Olive</p>
+                    <p>Clothe's Color: Blue, Pink</p>
+
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/19.svg" alt="Person 19">
+                    <p>Gender: Male</p>
+                    <p>Hair Color: Brown</p>
+                    <p>Hair Style: Straight</p>
+                    <p>Hair Length: Short</p>
+                    <p>Facial Hair: Yes</p>
+                    <p>Accessory: Necklace</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Fair</p>
+                    <p>Clothe's Color: Green, Yellow</p>
+                </div>
+                
+                <div class="mark-card" onclick="toggleMark(this)" onmouseover="showAttributes(this)" onmouseout="hideAttributes()">
+                    <img src="character/20.svg" alt="Person 20">
+                    <p>Gender: Female</p>
+                    <p>Hair Color: Black</p>
+                    <p>Hair Style: Curly</p>
+                    <p>Hair Length: Medium</p>
+                    <p>Facial Hair: No</p>
+                    <p>Accessory: Bracelet</p>
+                    <p>Headwear: Yes</p>
+                    <p>Skin: Dark</p>
+                    <p>Clothe's Color: Red, Blue</p>
+                </div>
+                
+            </div>
+        </div>
+
+        <div id="main-right-section">
+            <div id="premade-questions">
+                <h3 style="color: white;">Pre-made Questions</h3>
+                <button id="question-skin">Skin</button>
+                <button id="question-accessory">Accessory</button>
+                <button id="question-gender">Gender</button>
+                <button id="question-haircolor">Hair Color</button>
+                <button id="question-hairstyle">Hair Style</button>
+                <button id="question-hairlength">Hair Length</button>
+                <button id="question-facialhair">Facial Hair</button>
+                <button id="question-headwear">Headwear</button>
+                <button id="question-clothescolor">Clothe's Color</button>
+            </div>
+            
+            <div id="question-history">
+                <h3 style="color: white;">Specific Questions</h3>
+                <ul id="question-list"></ul>
+            </div>
+          
+        </div>
+
+
+    </div>
+   
+    
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content" >
+            <p style="color: white;margin-top:250px;" >Are you sure you want to select this card?</p>
+            <button onclick="confirmSelection()">Yes</button>
+            <button onclick="cancelSelection()">No</button>
+        </div>
+    </div>
+
+ 
+    <div id="ai-question-popup" class="modal">
+        <div class="modal-content2">
+            <p id="ai-question-text">AI's Question Goes Here</p>
+            <button onclick="answerAIQuestion(true)">Yes</button>
+            <button onclick="answerAIQuestion(false)">No</button>
+            <div id="user-selected-card-container" style="display: flex;"></div> 
+        </div>
+    </div>
+
+  
+<div id="game-over-modal" class="modal">
+    <div class="modal-content">
+        <p style="color: white;margin-top:250px;">Game Over. AI wins!</p>
+        <button onclick="resetGame()">OK</button>
+    </div>
+</div>
+<audio id="game-over-music" src="bg/gameover.mp3" preload="auto"></audio>
+
+
+<div id="ai-response-popup" style="display:none;" class="popup">
+    <div class="popup-content">
+        <p id="ai-response-text" ></p>
+    </div>
+</div>
+
+<div id="attributes"></div>
+
+<div id="confirmation-modal" class="popup-div" style="display: none;color:white;"></div>
+
+
+<div id="result-modal" class="popup-div" style="display: none;color:white;"></div>
+
+
+<div id="ai-guess-modal" class="modal" style="display: none;">
+    <div class="modal-content">
+        <span class="close-button" onclick="closeAIGuessModal()">&times;</span>
+        <h2 style="color:white;">AI Guess</h2>
+        <p id="ai-guess-text" style="color:white;"></p>
+        <img id="ai-guess-image" src="" alt="AI Guess" style="width: 150px; height: auto;"/>
+    </div>
+</div>
+<audio id="background-music" src="bg/bgmusic.mp3" preload="auto" loop></audio>
+<audio id="button-click-sound" src="bg/button.mp3" preload="auto"></audio>
+
+
+
+    <script src="frontend.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+            var audio = document.getElementById('background-music');
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    // Automatic playback started!
+                }).catch((error) => {
+                    // Auto-play was prevented
+                    console.log('Autoplay prevented:', error);
+                });
+            }
+        });
+        // Function to play the sound
+        function playClickSound() {
+            const clickSound = document.getElementById('button-click-sound');
+            clickSound.currentTime = 0; // Rewind to the start
+            clickSound.play();
+        }
+
+        // Add event listener to all buttons
+        document.querySelectorAll('button').forEach(button => {
+            button.addEventListener('click', playClickSound);
+        });
+
+
+   
+    </script>
+  
+
+</body>
+</html>

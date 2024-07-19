@@ -1,0 +1,501 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+    background-image: url('bg/bg.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+
+
+#game-container {
+    display: none;
+    width: 90%;
+    max-width: 1200px;
+    height: 90%;
+    max-height: 90vh;
+    background-color: rgba(0, 0, 0, 0.584);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+
+#left-section::-webkit-scrollbar {
+    width: 12px;
+}
+
+#left-section::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#left-section::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+#left-section,
+#right-section {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    /* Allow vertical scrolling within sections */
+}
+
+#left-section {
+    border-right: 1px solid #ddd;
+}
+
+
+#right-section {
+    flex: 1;
+    padding: 120px;
+    overflow-y: auto;
+    /* Allow vertical scrolling within sections */
+
+}
+
+#right-section button {
+    padding: 30px;
+    background-color: rgb(45, 43, 43);
+    position: absolute;
+    right: 420px;
+    bottom: 50px;
+
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    max-width: 300px;
+    max-height: 90vh;
+    /* Restrict the height to 90% of the viewport */
+    overflow-y: auto;
+    /* Allow vertical scrolling if content overflows */
+}
+
+button {
+    margin: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.modal-content button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #590915;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+    top: 50px;
+}
+
+.modal-content button:hover {
+    background-color: #9c0202;
+}
+
+
+
+
+/* Flex layout for cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Adjust the gap between cards */
+}
+
+#right-section p {
+    color: #fff;
+    font-size: 15px;
+}
+
+/* Individual card styling */
+.card {
+    position: relative;
+    width: calc(25% - 10px);
+    /* 25% width for 4 cards in a row with gap */
+    height: 200px;
+    /* Adjust height as needed */
+    overflow: hidden;
+    cursor: pointer;
+    /* Add cursor pointer for interactive feel */
+    box-sizing: border-box;
+    background-color: #000000;
+}
+
+
+/* Ensure image covers entire card */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the entire div */
+}
+
+/* Show attributes when card is selected */
+.card.selected p {
+    display: block;
+}
+
+
+
+/* Flex layout for cards */
+.mark-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    /* Adjust the gap between cards */
+}
+
+/* Individual card styling */
+.mark-card {
+    position: relative;
+    height: 200px;
+    /* Adjust height as needed */
+    overflow: hidden;
+    cursor: pointer;
+    /* Add cursor pointer for interactive feel */
+    border: 1px solid #000000;
+    /* Optional: Add border for visibility */
+    box-sizing: border-box;
+}
+
+
+/* Ensure image covers entire card */
+.mark-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image covers the entire div */
+}
+
+/* Show attributes when card is selected */
+.mark-card.selected p {
+    display: block;
+}
+
+/* Styling for the user-selected-card-container */
+#user-selected-card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 20px;
+    /* Adjust margin as needed */
+}
+
+#ai-question-popup img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+#ai-question-popup {
+    display: none;
+    z-index: 2;
+    color: rgb(255, 255, 255);
+}
+
+
+
+
+#main-left-section #guessSuspect {
+    position: absolute;
+    bottom: 10px;
+    left: 25%;
+    z-index: 1;
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+
+}
+
+#main-left-section #unselectCards {
+    position: absolute;
+    bottom: 10px;
+    left: 5%;
+    z-index: 1;
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+
+}
+
+.modal-content2 {
+    background-color: #000000;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 80%;
+    max-width: 600px;
+    max-height: 90vh;
+    /* Restrict the height to 90% of the viewport */
+    overflow-y: auto;
+    /* Allow vertical scrolling if content overflows */
+    color: rgb(255, 255, 255);
+}
+
+
+
+.modal-content2 button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    font-size: 16px;
+    background-color: #6d0000;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.modal-content2 button:hover {
+    background-color: #c40000;
+}
+
+
+#main-left-section button {
+    background-color: #000000;
+    color: rgb(206, 0, 0);
+    border-color: 3px solid rgb(184, 0, 0);
+    margin-left: 60px;
+    position: absolute;
+    bottom: 5px;
+    left: 15%;
+    z-index: 1;
+    width: 100px;
+    height: 50px;
+    border-radius: 15px;
+
+}
+
+#attributes {
+    position: absolute;
+    top: 0;
+    left: 110%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+    display: none;
+    max-width: 200px;
+    z-index: 1000;
+}
+
+
+
+
+
+
+
+
+
+
+.popup-div {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-image: url('bg/ai.svg');
+    background-size: cover;
+    /* Ensure the image covers the entire popup */
+    background-position: center;
+    /* Center the background image */
+    background-repeat: no-repeat;
+    /* Prevent the background image from repeating */
+    background-color: rgba(255, 255, 255, 0);
+    /* White background with 50% opacity */
+    padding: 20px;
+    z-index: 1000;
+    display: none;
+    width: 400px;
+    /* Set a fixed width for the popup */
+    height: 300px;
+    /* Set a fixed height for the popup */
+    border-radius: 10px;
+    /* Optional: Add rounded corners */
+    align-items: center;
+    justify-content: center;
+}
+
+#premade-questions button {
+    background-color: #000000;
+    /* Dark gray/black background */
+    color: rgb(255, 0, 0);
+    /* Red text color */
+    border: 2px solid rgb(24, 0, 0);
+    /* Red border */
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.popup-content {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+    /* White background with 50% opacity */
+}
+
+.popup-content #ai-response-text {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0);
+    /* Fully transparent background */
+    color: white;
+    /* White font color */
+    font-size: 100px;
+    /* Font size 30px */
+    font-weight: 400;
+    margin-top: 200px
+}
+
+.popup-content h3 {
+    margin-top: 0;
+}
+
+.popup-content button {
+    margin-top: 10px;
+}
+
+.confirmation-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+
+.modal-content {
+    width: 728px;
+    height: 408px;
+    background-image: url('bg/notif.svg');
+    background-size: cover;
+    /* Ensure the image covers the entire div */
+    background-position: center;
+    /* Center the image */
+    background-repeat: no-repeat;
+    /* Prevent the image from repeating */
+    background-color: rgba(255, 255, 255, 0);
+    /* White background with 50% opacity for transparency */
+    z-index: 1000;
+    /* Ensure the modal is above other content */
+}
+
+
+
+.confirmation-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.confirmation-content h3 {
+    margin-top: 0;
+}
+
+.confirmation-content .suspected-card {
+    max-width: 200px;
+    margin-top: 10px;
+}
+
+.confirmation-content .buttons {
+    margin-top: 10px;
+}
+
+.confirmation-content .buttons button {
+    margin: 0 5px;
+}
